@@ -1,177 +1,79 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo Interattiva per Samsung Flip</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 2rem;
-      font-family: Arial, sans-serif;
-      background-color: #333333; /* Medium intensity black */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      transition: background-color 0.5s;
-    }
-
-    h1, h2 {
-      margin: 1rem 0;
-      text-align: center;
-      color: #ffffff; /* White text for contrast */
-    }
-
-    .form-group {
-      margin: 1.5rem 0;
-      width: 100%;
-      max-width: 500px;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    .form-group input {
-      padding: 1rem;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      border: 2px solid #ccc;
-      border-radius: 12px;
-    }
-
-    .form-group input[type="color"] {
-      padding: 0.5rem;
-      height: 70px;
-    }
-
-    .form-group button {
-      padding: 1rem;
-      font-size: 1.5rem;
-      background-color: #007BFF;
-      color: #ffffff; /* White text for contrast */
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .form-group button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Affari Dante</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Logo in alto a sinistra -->
-  <img src="logo.jpeg" alt="Logo Plastiplex" style="position: absolute; top: 10px; left: 10px; width: 150px;">
-
-  <h1 id="titolo">Titolo Predefinito</h1>
-  <h2 id="sottotitolo">Sottotitolo Predefinito</h2>
-
-  <div class="form-group">
-    <input type="text" id="inputTitolo" placeholder="Inserisci nuovo titolo">
-    <input type="text" id="inputSottotitolo" placeholder="Inserisci nuovo sottotitolo">
-    <label for="coloreSfondo">Scegli il colore di sfondo:</label>
-    <input type="color" id="coloreSfondo">
-    <button onclick="applicaModifiche()">Applica Modifiche</button>
-  </div>
-
-  <!-- Lavagna disegnabile -->
-  <div class="form-group" style="margin-top: 3rem;">
-    <h2>Lavagna Disegnabile</h2>
-    <canvas id="lavagna" width="800" height="500" style="border: 2px solid #ccc; border-radius: 12px; touch-action: none;"></canvas>
-    <button onclick="pulisciLavagna()" style="margin-top: 1rem;">Pulisci Lavagna</button>
-  </div>
-
-  <script>
-    function applicaModifiche() {
-      const nuovoTitolo = document.getElementById('inputTitolo').value.trim();
-      const nuovoSottotitolo = document.getElementById('inputSottotitolo').value.trim();
-      const nuovoColore = document.getElementById('coloreSfondo').value;
-
-      if (nuovoTitolo) {
-        document.getElementById('titolo').innerText = nuovoTitolo;
-      }
-
-      if (nuovoSottotitolo) {
-        document.getElementById('sottotitolo').innerText = nuovoSottotitolo;
-      }
-
-      document.body.style.backgroundColor = nuovoColore;
-    }
-
-    // Configurazione lavagna
-    const lavagna = document.getElementById('lavagna');
-    const ctx = lavagna.getContext('2d');
-    let isDrawing = false;
-    let lastX = 0;
-    let lastY = 0;
-    let strokeColor = '#000000';
-    let strokeWidth = 5;
-
-    // Imposta stilo iniziale
-    ctx.strokeStyle = strokeColor;
-    ctx.lineWidth = strokeWidth;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-
-    // Funzioni per disegnare
-    function iniziaDisegno(e) {
-      isDrawing = true;
-      [lastX, lastY] = [e.offsetX, e.offsetY];
-    }
-
-    function disegna(e) {
-      if (!isDrawing) return;
-      ctx.beginPath();
-      ctx.moveTo(lastX, lastY);
-      ctx.lineTo(e.offsetX, e.offsetY);
-      ctx.stroke();
-      [lastX, lastY] = [e.offsetX, e.offsetY];
-    }
-
-    function terminaDisegno() {
-      isDrawing = false;
-    }
-
-    function pulisciLavagna() {
-      ctx.clearRect(0, 0, lavagna.width, lavagna.height);
-    }
-
-    // Event listeners per touch e mouse
-    lavagna.addEventListener('mousedown', iniziaDisegno);
-    lavagna.addEventListener('mousemove', disegna);
-    lavagna.addEventListener('mouseup', terminaDisegno);
-    lavagna.addEventListener('mouseout', terminaDisegno);
-
-    lavagna.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      const touch = e.touches[0];
-      const mouseEvent = new MouseEvent('mousedown', {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-      });
-      lavagna.dispatchEvent(mouseEvent);
-    });
-
-    lavagna.addEventListener('touchmove', (e) => {
-      e.preventDefault();
-      const touch = e.touches[0];
-      const mouseEvent = new MouseEvent('mousemove', {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-      });
-      lavagna.dispatchEvent(mouseEvent);
-    });
-
-    lavagna.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      const mouseEvent = new MouseEvent('mouseup', {});
-      lavagna.dispatchEvent(mouseEvent);
-    });
-  </script>
-
+    <div class="container">
+        <header>
+            <div class="logo-time">
+                <div class="logo">
+                    <span class="logo-icon">D</span>
+                    <span class="logo-text">CENTRO AFFARI<br>DANTE</span>
+                </div>
+                <div class="time-date">
+                    <span class="time" id="time">10:45</span>
+                    <span class="date" id="date">martedì 16 aprile</span>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Cerca" id="searchInput">
+            </div>
+        </header>
+        <main>
+            <ul class="company-list" id="companyList">
+                <li class="company-item" onclick="window.location.href='plastiplex.html'" style="cursor:pointer;">
+    <div class="company-icon blue">R</div>
+    <div class="company-info">
+        <span class="company-name">Plastiplex & Scripta SA</span>
+        <span class="company-floor">3° piano</span>
+    </div>
+    <div class="company-arrow">&gt;</div>
+</li>
+<li class="company-item" onclick="window.location.href='visionary.html'" style="cursor:pointer;">
+    <div class="company-icon white">V</div>
+    <div class="company-info">
+        <span class="company-name">Visionary Marketing</span>
+        <span class="company-floor">2° piano</span>
+    </div>
+    <div class="company-arrow">&gt;</div>
+</li>
+<li class="company-item" onclick="window.location.href='rossi.html'" style="cursor:pointer;">
+    <div class="company-icon purple">RA</div>
+    <div class="company-info">
+        <span class="company-name">Rossi & Associati</span>
+        <span class="company-floor">4° piano</span>
+    </div>
+    <div class="company-arrow">&gt;</div>
+</li>
+<li class="company-item" onclick="window.location.href='solanea.html'" style="cursor:pointer;">
+    <div class="company-icon white"> <img src="leaf.svg" alt="Leaf" class="icon-svg"></div>
+    <div class="company-info">
+        <span class="company-name">Solanea Industries</span>
+        <span class="company-floor">1° piano</span>
+    </div>
+    <div class="company-arrow">&gt;</div>
+</li>
+<li class="company-item" onclick="window.location.href='brighton.html'" style="cursor:pointer;">
+    <div class="company-icon gray">BC</div>
+    <div class="company-info">
+        <span class="company-name">Brighton Capital</span>
+        <span class="company-floor">5° piano</span>
+    </div>
+    <div class="company-arrow">&gt;</div>
+</li>
+            </ul>
+        </main>
+        <nav class="bottom-nav">
+            <button>Quadrante</button>
+            <button>Mappa edificio</button>
+            <button>Informazioni</button>
+            <button>Accessibilità</button>
+        </nav>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
