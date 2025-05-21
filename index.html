@@ -7,18 +7,44 @@
     <link rel="stylesheet" href="style.css">
     <style>
         body {
-            transform: rotate(90deg);
-            transform-origin: left top;
-            width: 100vh;
-            height: 100vw;
+            width: 100vw;
+            height: 100vh;
             overflow-x: hidden;
-            position: absolute;
-            top: 0;
-            left: 0;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        
+        /* Orientamento landscape: layout normale */
+        @media (orientation: landscape) {
+            body {
+                /* Nessuna rotazione, layout orizzontale */
+            }
+        }
+        /* Orientamento portrait: layout adattato */
+        @media (orientation: portrait) {
+            body {
+                /* Se vuoi forzare la visualizzazione landscape, mostra un messaggio o ruota il layout */
+            }
+            .container {
+                /* Esempio: puoi nascondere il contenuto o mostrare un avviso */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                background: #fff;
+            }
+            .orientation-warning {
+                display: block;
+                font-size: 2rem;
+                color: #333;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="orientation-warning" style="display:none;">Per una migliore esperienza, ruota il dispositivo in orizzontale (landscape).</div>
     <div class="container">
         <header>
             <div class="logo-time">
@@ -87,5 +113,22 @@
         </nav>
     </div>
     <script src="script.js"></script>
+<script>
+// Mostra un avviso se il dispositivo è in portrait
+function checkOrientation() {
+    const warning = document.querySelector('.orientation-warning');
+    const container = document.querySelector('.container');
+    if(window.matchMedia("(orientation: portrait)").matches) {
+        warning.style.display = 'block';
+        container.style.display = 'none';
+    } else {
+        warning.style.display = 'none';
+        container.style.display = '';
+    }
+}
+window.addEventListener('DOMContentLoaded', checkOrientation);
+window.addEventListener('orientationchange', checkOrientation);
+window.addEventListener('resize', checkOrientation);
+</script>
 </body>
 </html>
