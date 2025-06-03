@@ -144,3 +144,31 @@ header {
 .bottom-nav button:focus, .bottom-nav button:hover {
     color: #fff;
 }
+
+.orientation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 80px);
+    gap: 10px;
+    margin: 24px;
+}
+
+.orientation-grid .quadrant,
+.orientation-grid .center {
+    background: #232323;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.orientation-grid .center {
+    font-size: 1.1em;
+}
+
+.orientation-grid .placeholder {
+    background: none;
+}
