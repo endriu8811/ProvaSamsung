@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatrice placcatura elettrolitica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-time">
+                <div class="logo">
+                    <span class="logo-icon">D</span>
+                    <span class="logo-text">CENTRO AFFARI<br>DANTE</span>
+                </div>
+                <div class="time-date">
+                    <span class="time" id="time">10:45</span>
+                    <span class="date" id="date">martedì 16 aprile</span>
+                </div>
+            </div>
+        </header>
+        <main>
+            <h1 class="company-title">Calcolatrice per placcatura elettrolitica</h1>
+            <p class="company-desc">Inserisci i dati di processo per stimare la massa depositata e il tempo necessario per raggiungere lo spessore desiderato.</p>
+
+            <form class="calculator" id="platingCalculator">
+                <div class="field-group">
+                    <label for="area">Area superficie (dm²)</label>
+                    <input type="number" id="area" name="area" min="0" step="0.01" placeholder="Es. 12.5" required>
+                </div>
+                <div class="field-group">
+                    <label for="thickness">Spessore desiderato (μm)</label>
+                    <input type="number" id="thickness" name="thickness" min="0" step="0.1" placeholder="Es. 15" required>
+                </div>
+                <div class="field-group">
+                    <label for="density">Densità metallo (g/cm³)</label>
+                    <input type="number" id="density" name="density" min="0" step="0.01" placeholder="Es. 8.9" required>
+                </div>
+                <div class="field-group">
+                    <label for="atomicWeight">Peso atomico (g/mol)</label>
+                    <input type="number" id="atomicWeight" name="atomicWeight" min="0" step="0.01" placeholder="Es. 63.55" required>
+                </div>
+                <div class="field-group">
+                    <label for="valence">Valenza (n)</label>
+                    <input type="number" id="valence" name="valence" min="1" step="1" placeholder="Es. 2" required>
+                </div>
+                <div class="field-group">
+                    <label for="efficiency">Efficienza del bagno (%)</label>
+                    <input type="number" id="efficiency" name="efficiency" min="1" max="100" step="1" placeholder="Es. 95" value="95" required>
+                </div>
+                <div class="field-group">
+                    <label for="current">Corrente disponibile (A)</label>
+                    <input type="number" id="current" name="current" min="0" step="0.01" placeholder="Es. 20">
+                </div>
+                <div class="field-group">
+                    <label for="currentDensity">Densità di corrente (A/dm²)</label>
+                    <input type="number" id="currentDensity" name="currentDensity" min="0" step="0.01" placeholder="Es. 2">
+                </div>
+                <button type="submit" class="primary-action">Calcola</button>
+            </form>
+
+            <section class="results" id="platingResults" aria-live="polite">
+                <div class="result-card">
+                    <h2>Risultati</h2>
+                    <p class="result-item"><span>Massa stimata</span> <strong id="massResult">—</strong></p>
+                    <p class="result-item"><span>Carica richiesta</span> <strong id="chargeResult">—</strong></p>
+                    <p class="result-item"><span>Corrente usata</span> <strong id="currentResult">—</strong></p>
+                    <p class="result-item"><span>Tempo stimato</span> <strong id="timeResult">—</strong></p>
+                </div>
+                <p class="helper-text" id="resultNote">I risultati sono indicativi e non sostituiscono le verifiche di laboratorio.</p>
+            </section>
+        </main>
+        <nav class="bottom-nav">
+            <button onclick="window.location.href='index.html'">Quadrante</button>
+            <button>Mappa edificio</button>
+            <button>Informazioni</button>
+            <button>Accessibilità</button>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

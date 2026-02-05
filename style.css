@@ -144,3 +144,84 @@ header {
 .bottom-nav button:focus, .bottom-nav button:hover {
     color: #fff;
 }
+
+.company-title {
+    font-size: 1.4em;
+    margin: 12px 24px 8px;
+}
+
+.company-desc {
+    margin: 0 24px 20px;
+    color: #b0b0b0;
+    line-height: 1.5;
+}
+
+.calculator {
+    display: grid;
+    gap: 16px;
+    padding: 0 24px 16px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field-group label {
+    font-size: 0.95em;
+    color: #cfcfcf;
+}
+
+.field-group input {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #2c2c2c;
+    background: #1f1f1f;
+    color: #fff;
+    font-size: 1em;
+}
+
+.primary-action {
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: none;
+    background: #6d4aff;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.primary-action:hover {
+    background: #7d5cff;
+}
+
+.results {
+    padding: 0 24px 24px;
+}
+
+.result-card {
+    background: #1f1f1f;
+    border-radius: 14px;
+    padding: 16px;
+    border: 1px solid #2c2c2c;
+}
+
+.result-card h2 {
+    margin: 0 0 12px;
+    font-size: 1.1em;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    font-size: 0.98em;
+}
+
+.helper-text {
+    margin: 12px 0 0;
+    font-size: 0.85em;
+    color: #9b9b9b;
+}
